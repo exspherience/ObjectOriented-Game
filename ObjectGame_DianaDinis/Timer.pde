@@ -3,6 +3,7 @@ class Timer
   int interval;
   int secDown;
   int elapsed;
+  int startTime;
 
   Timer()
   {
@@ -20,7 +21,11 @@ class Timer
 
   void calculateTime()
   {
-    elapsed = millis()/1000; // set elapsed time in seconds
     secDown = interval/1000 - elapsed; // decrease seconds
+  }
+  
+  void startTimer()
+  {
+    startTime = millis();
   }
 }
