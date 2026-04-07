@@ -7,7 +7,7 @@ class Timer
 
   Timer()
   {
-    interval = 120000; //120 seconds
+    interval = 10000; //120 seconds
   }
 
   void display()
@@ -21,11 +21,12 @@ class Timer
 
   void calculateTime()
   {
-    secDown = interval/1000 - elapsed; // decrease seconds
+    elapsed = millis()/1000;
+    secDown = interval/1000 - (elapsed - startTime); // decrease seconds
   }
   
   void startTimer()
   {
-    startTime = millis();
+    startTime = millis()/1000;
   }
 }
