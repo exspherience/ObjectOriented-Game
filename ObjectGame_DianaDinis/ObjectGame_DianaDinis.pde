@@ -1,4 +1,6 @@
 Timer timer;
+Boat boat;
+
 boolean gameStart = false;
 boolean gameOver = false;
 
@@ -6,7 +8,9 @@ void setup()
 {
   size(400, 400);
   //fullScreen();
+  rectMode(CENTER);
   timer = new Timer();
+  boat = new Boat();
 }
 
 void draw()
@@ -15,6 +19,9 @@ void draw()
   if (gameStart)
   {
     timer.display();
+    boat.display();
+    boat.update();
+
     if (timer.secDown <= 0)
     {
       background(0); // placeholder
@@ -33,12 +40,34 @@ void draw()
   }
 }
 
+
+//////////////
+// Controls //
+//////////////
 void keyPressed()
 {
   if (!gameStart && !gameOver)
   {
     gameStart = true;
     timer.startTimer();
+  } 
+  else if (!gameOver && gameStart)
+  {    
+    if (key == 'W' || key == 'w') boat.upPressed = true;
+    if (key == 'S' || key == 's') boat.downPressed = true;
+    if (key == 'A' || key == 'a') boat.leftPressed = true;
+    if (key == 'D' || key == 'd') boat.rightPressed = true;
+  }
+}
+
+void keyReleased()
+{
+  if (!gameOver && gameStart)
+  {
+    if (key == 'W' || key == 'w') boat.upPressed = false;
+    if (key == 'S' || key == 's') boat.downPressed = false;
+    if (key == 'A' || key == 'a') boat.leftPressed = false;
+    if (key == 'D' || key == 'd') boat.rightPressed = false;
   }
 }
 
@@ -49,6 +78,7 @@ void mousePressed()
     retry();
   }
 }
+
 //////////////////////////
 // Game State Functions //
 //////////////////////////
@@ -65,7 +95,6 @@ void endScreen()
   fill(0);
   text("Game Over", 150, 100);
   fill(0, 0, 255); // blue rect as placeholder for retry button
-  rectMode(CENTER);
   rect(width/2, height/2, 50, 50);
 }
 
