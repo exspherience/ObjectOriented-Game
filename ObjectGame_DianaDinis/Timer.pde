@@ -7,7 +7,7 @@ class Timer
 
   Timer()
   {
-    interval = 10000; //120 seconds
+    interval = 120000; //120 seconds
   }
 
   void display()

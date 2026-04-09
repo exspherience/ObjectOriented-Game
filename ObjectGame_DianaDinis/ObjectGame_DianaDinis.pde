@@ -62,6 +62,14 @@ void spawnFish()
      fishes.get(i).update();
      fishes.get(i).display();
      
+     if(boat.fishingLineX >= fishes.get(i).position.x-25 &&
+        boat.fishingLineX <= (fishes.get(i).position.x-25 + fishes.get(i).size+20) &&
+        boat.fishingLineY >= fishes.get(i).position.y &&
+        boat.fishingLineY <= fishes.get(i).position.y + fishes.get(i).size-5)
+        {
+          fishes.get(i).fishColor = color(255,0,0); 
+          fishes.get(i).display();
+        }     
      // remove off screen fish
      if (fishes.get(i).position.x <= -10 || fishes.get(i).position.x >= width+10)
      {
@@ -69,6 +77,10 @@ void spawnFish()
      }
    }
 }
+
+///////////////
+// Collision //
+///////////////
 
 
 //////////////

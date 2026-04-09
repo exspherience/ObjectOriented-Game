@@ -8,6 +8,8 @@ class Fish
   float spawnX; // x position for fish spawn location
   float size;
   
+  color fishColor;
+  
   Fish()
   {
     // make fish spawn on edges of screen
@@ -21,6 +23,7 @@ class Fish
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
     size = random(10,30);
+    fishColor = color(0,255,0);
   }
   
   void update()
@@ -50,8 +53,10 @@ class Fish
   void display()
   {
     noStroke();
-    fill(100);
+    fill(fishColor);
     ellipse(position.x, position.y, size+20,  size-5);
+    fill(0, 50);
+    rect(position.x, position.y, size+20, size-5);
   }
   
 }
