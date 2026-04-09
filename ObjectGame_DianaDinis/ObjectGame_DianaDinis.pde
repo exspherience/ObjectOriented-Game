@@ -133,6 +133,7 @@ void endScreen()
   fill(0);
   text("Game Over", 150, 100);
   fill(0, 0, 255); // blue rect as placeholder for retry button
+  noStroke();
   rect(width/2, height/2, 50, 50);
 }
 

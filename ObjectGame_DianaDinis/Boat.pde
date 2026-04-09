@@ -45,5 +45,7 @@ class Boat
     // fishing line movement 
     if (upPressed)    fishingLineY -= speed;
     if (downPressed)  fishingLineY += speed;
+    // prevent fishing line from going to space
+    fishingLineY = constrain(fishingLineY,boatY,height);
   }
 }
