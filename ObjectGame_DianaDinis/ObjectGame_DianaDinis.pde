@@ -62,10 +62,10 @@ void spawnFish()
      fishes.get(i).update();
      fishes.get(i).display();
      
-     if(boat.fishingLineX >= fishes.get(i).position.x-25 &&
-        boat.fishingLineX <= (fishes.get(i).position.x-25 + fishes.get(i).size+20) &&
-        boat.fishingLineY >= fishes.get(i).position.y &&
-        boat.fishingLineY <= fishes.get(i).position.y + fishes.get(i).size-5)
+     if(boat.fishingLineX+10 >= fishes.get(i).position.x &&
+        boat.fishingLineX+10 <= (fishes.get(i).position.x + fishes.get(i).size+20) &&
+        boat.fishingLineY+10 >= fishes.get(i).position.y &&
+        boat.fishingLineY+10 <= fishes.get(i).position.y + fishes.get(i).size)
         {
           fishes.get(i).fishColor = color(255,0,0); 
           fishes.get(i).display();
@@ -77,10 +77,6 @@ void spawnFish()
      }
    }
 }
-
-///////////////
-// Collision //
-///////////////
 
 
 //////////////

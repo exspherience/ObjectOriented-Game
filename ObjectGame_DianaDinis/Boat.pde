@@ -31,7 +31,7 @@ class Boat
     line(boatX+40,boatY-30,boatX+40,fishingLineY);
     
     // 
-    fill(0,255,20);
+    stroke(0,255,20);
     strokeWeight(10);
     point(boatX+40, fishingLineY);
   }

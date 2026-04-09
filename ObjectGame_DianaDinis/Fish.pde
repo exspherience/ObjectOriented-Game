@@ -9,7 +9,7 @@ class Fish
   float size;
   
   color fishColor;
-  
+ 
   Fish()
   {
     // make fish spawn on edges of screen
@@ -54,9 +54,9 @@ class Fish
   {
     noStroke();
     fill(fishColor);
-    ellipse(position.x, position.y, size+20,  size-5);
+    ellipse(position.x, position.y, size+20,  size);
+    
     fill(0, 50);
-    rect(position.x, position.y, size+20, size-5);
+    rect(position.x, position.y, size+20, size);
   }
-  
 }
