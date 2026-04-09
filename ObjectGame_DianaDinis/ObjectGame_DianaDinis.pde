@@ -1,5 +1,6 @@
 Timer timer;
 Boat boat;
+ArrayList<Fish> fishes;
 
 boolean gameStart = false;
 boolean gameOver = false;
@@ -11,6 +12,7 @@ void setup()
   rectMode(CENTER);
   timer = new Timer();
   boat = new Boat();
+  fishes = new ArrayList<Fish>();
 }
 
 void draw()
@@ -19,6 +21,7 @@ void draw()
   if (gameStart)
   {
     timer.display();
+    spawnFish();
     boat.display();
     boat.update();
 
@@ -38,6 +41,26 @@ void draw()
   {
     endScreen();
   }
+}
+
+void spawnFish()
+{
+   if (frameCount % 30 == 0)
+   {
+      Fish f = new Fish();
+      fishes.add(f);
+   }
+   
+   for (int i = fishes.size() - 1; i >= 0; i--)
+   {
+     fishes.get(i).update();
+     fishes.get(i).display();
+     
+     if (fishes.get(i).position.x <= -10 || fishes.get(i).position.x >= width+10)
+     {
+       fishes.remove(i); 
+     }
+   }
 }
 
 

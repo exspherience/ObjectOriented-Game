@@ -23,6 +23,8 @@ class Boat
     rect(boatX, boatY, 60, 20);
     
     // draw fishing line
+    stroke(0);
+    strokeWeight(3);
     line(boatX+40,boatY-30,boatX+40,fishingLineY);
   }
   
