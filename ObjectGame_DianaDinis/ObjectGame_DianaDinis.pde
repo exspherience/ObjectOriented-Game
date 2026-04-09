@@ -43,19 +43,26 @@ void draw()
   }
 }
 
+
+//////////
+// Fish //
+//////////
 void spawnFish()
 {
+  // spawn new fish every 30 frames
    if (frameCount % 30 == 0)
    {
       Fish f = new Fish();
       fishes.add(f);
    }
    
+   // move and draw fish
    for (int i = fishes.size() - 1; i >= 0; i--)
    {
      fishes.get(i).update();
      fishes.get(i).display();
      
+     // remove off screen fish
      if (fishes.get(i).position.x <= -10 || fishes.get(i).position.x >= width+10)
      {
        fishes.remove(i); 
