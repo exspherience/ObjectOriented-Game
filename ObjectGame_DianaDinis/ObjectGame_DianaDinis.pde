@@ -5,6 +5,8 @@ ArrayList<Fish> fishes;
 boolean gameStart = false;
 boolean gameOver = false;
 
+int fishCounter = 0;
+
 void setup()
 {
   size(400, 400);
@@ -24,7 +26,6 @@ void draw()
     spawnFish();
     boat.display();
     boat.update();
-
     if (timer.secDown <= 0)
     {
       background(0); // placeholder
@@ -62,13 +63,22 @@ void spawnFish()
      fishes.get(i).update();
      fishes.get(i).display();
      
-     if(boat.fishingLineX+10 >= fishes.get(i).position.x &&
-        boat.fishingLineX+10 <= (fishes.get(i).position.x + fishes.get(i).size+20) &&
-        boat.fishingLineY+10 >= fishes.get(i).position.y &&
-        boat.fishingLineY+10 <= fishes.get(i).position.y + fishes.get(i).size)
+     // fish collision
+     // followed tutorial from Jeffrey Thompson
+     // https://www.jeffreythompson.org/collision-detection/point-rect.php
+     if(boat.fishingLineX+5 >= fishes.get(i).position.x &&
+        boat.fishingLineX-5 <= (fishes.get(i).position.x + fishes.get(i).size) &&
+        boat.fishingLineY+5 >= fishes.get(i).position.y &&
+        boat.fishingLineY-5 <= fishes.get(i).position.y + fishes.get(i).size)
         {
           fishes.get(i).fishColor = color(255,0,0); 
           fishes.get(i).display();
+          
+          if(fishes.get(i).caught == false)
+          {
+            fishCounter++;
+            fishes.get(i).setCaught();
+          }
         }     
      // remove off screen fish
      if (fishes.get(i).position.x <= -10 || fishes.get(i).position.x >= width+10)

@@ -9,6 +9,7 @@ class Fish
   float size;
   
   color fishColor;
+  boolean caught;
  
   Fish()
   {
@@ -52,11 +53,19 @@ class Fish
   // draw fish
   void display()
   {
+    fill(0);
+    text(fishCounter, 5, 50);
+      
     noStroke();
     fill(fishColor);
     ellipse(position.x, position.y, size+20,  size);
     
     fill(0, 50);
     rect(position.x, position.y, size+20, size);
+  }
+
+  void setCaught()
+  {
+    caught = true; 
   }
 }
