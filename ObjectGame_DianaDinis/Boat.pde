@@ -28,19 +28,28 @@ class Boat
     // draw fishing line
     stroke(0);
     strokeWeight(3);
-    line(boatX+40,boatY-30,boatX+40,fishingLineY);
+    line(boatX+40,boatY-30,fishingLineX,fishingLineY);
     
     // 
     stroke(0,255,20);
     strokeWeight(10);
-    point(boatX+40, fishingLineY);
+    point(fishingLineX, fishingLineY);
   }
   
   void update()
   {
     // boat movement
-    if (leftPressed)  boatX -= speed;
-    if (rightPressed) boatX += speed;
+    if (leftPressed)  
+    {
+      boatX -= speed;
+      fishingLineX -= speed;
+    }
+    if (rightPressed)
+    {
+      boatX += speed;
+      fishingLineX += speed;
+    }
+    
     
     // fishing line movement 
     if (upPressed)    fishingLineY -= speed;
