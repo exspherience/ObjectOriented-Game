@@ -66,6 +66,14 @@ class Fish
 
   void setCaught()
   {
-    caught = true; 
+    caught = true;
+  } 
+  
+  void reelFish()
+  {
+    velocity.set(0, 0);
+    acceleration.set(0, 0);
+    position.set(boat.boatX+40, boat.fishingLineY);
   }
+  
 }
