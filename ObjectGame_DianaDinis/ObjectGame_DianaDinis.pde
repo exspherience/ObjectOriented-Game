@@ -101,8 +101,8 @@ boolean fishCollision(int i)
 void removeFish(int i)
 {
     // remove off screen fish
-    if (fishes.get(i).position.x <= -10 ||
-      fishes.get(i).position.x >= width+10)
+    if (fishes.get(i).position.x <= -10 && !fishes.get(i).caught ||
+      fishes.get(i).position.x >= width+10 && !fishes.get(i).caught)
     {
       fishes.remove(i);
     } 
