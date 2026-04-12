@@ -20,12 +20,18 @@ void draw()
 {
   background(200, 255, 255);
   
+  // waves
+  noStroke();
+  fill(10,155,245);
+  rect(width/2,260,width,300);
+  
   spawnAndUpdateFish();
   if (gameStart)
   {
     timer.display();
     boat.display();
     boat.update();
+
     drawScore();
     if (timer.secDown <= 0)
     {
@@ -44,6 +50,7 @@ void draw()
     endScreen();
   }
 }
+
 ///////////////////
 // Score Display //
 ///////////////////
