@@ -59,8 +59,16 @@ class Fish
     noStroke();
     fill(fishColor);
     ellipse(position.x, position.y, size+20,  size);
+    if(spawnX <= 0) 
+    {
+      triangle(position.x,position.y,position.x-(size/2)-10,position.y+(size/2),position.x-(size/2)-10,position.y-(size/2));
+    }
+    else
+    {
+      triangle(position.x,position.y,position.x+(size/2)+10,position.y+(size/2),position.x+(size/2)+10,position.y-(size/2));
+    }
     
-    fill(0, 50);
+    fill(0, 1);
     rect(position.x, position.y, size+20, size);
   }
 
