@@ -1,9 +1,26 @@
+/* 
+    Game Information - Fishing
+    
+    Click the play button to begin.
+    Move the boat left and right with A and D keys
+    Move the fishing line up and down with W and S keys
+    When the lure collides with a fish, you've caught it!
+    Reel it in with W. Big fish take longer to reel but are worth more points!
+    5 for big fish, 3 for medium fish, 1 for small fish.
+    You've got 1 minute to catch as many as possible. Aim for a high score!
+    Click the Retry button after time up to return to Start
+*/
+
+// object variables
 Timer timer;
 Boat boat;
 ArrayList<Fish> fishes;
 
+// game state variables
 boolean gameStart = false;
 boolean gameOver = false;
+
+// fish related variables
 boolean canCatch = true;
 int fishScore = 0;
 
@@ -11,6 +28,7 @@ void setup()
 {
   size(400, 400);
   rectMode(CENTER);
+  // initialize objects
   timer = new Timer();
   boat = new Boat();
   fishes = new ArrayList<Fish>();
@@ -18,14 +36,15 @@ void setup()
 
 void draw()
 {
-  background(200, 255, 255);
+  background(200, 255, 255); // light blue
   
-  // waves
+  // water
   noStroke();
-  fill(10,155,245);
+  fill(10,155,245); // blue
   rect(width/2,260,width,300);
   
-  spawnAndUpdateFish();
+  spawnAndUpdateFish(); // draw fish, allows for old fish to be removed 
+  // once game started, draw all elements
   if (gameStart)
   {
     timer.display();
@@ -33,18 +52,20 @@ void draw()
     boat.update();
 
     drawScore();
+    // when time runs out end game
     if (timer.secDown <= 0)
     {
-      background(0); // placeholder
       timer.secDown = 0;
       gameStart = false;
       gameOver = true;
     }
   } 
+  // display start screen if game hasn't begun
   else if (!gameStart && !gameOver)
   {
     startScreen();
   } 
+  // display end screen once game ends
   else if (gameOver)
   {
     endScreen();
