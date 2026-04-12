@@ -24,7 +24,7 @@ class Fish
     velocity = new PVector(0,0);
     acceleration = new PVector(0,0);
     size = random(10,30);
-    fishColor = color(0,255,0);
+    fishColor = color(100,100,155);
   }
   
   void update()

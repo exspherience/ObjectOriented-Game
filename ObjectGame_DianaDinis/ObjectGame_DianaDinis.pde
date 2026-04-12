@@ -4,7 +4,7 @@ ArrayList<Fish> fishes;
 
 boolean gameStart = false;
 boolean gameOver = false;
-  boolean canCatch = true;
+boolean canCatch = true;
 int fishCounter = 0;
 
 void setup()
@@ -75,11 +75,24 @@ void spawnAndUpdateFish()
 
     if (fishCollision(i))
     {
-      fishes.get(i).fishColor = color(255, 0, 0);
-      fishes.get(i).display();
+      //fishes.get(i).fishColor = color(255, 0, 0);
+      //fishes.get(i).display();
 
       if (fishes.get(i).caught == false && !canCatch)
       {
+        if(fishes.get(i).size >= 18)
+        {
+           boat.reelSpeed = 1; 
+        }
+        else if(fishes.get(i).size >= 14 && fishes.get(i).size <= 17)
+        {
+           boat.reelSpeed = 2; 
+        }
+        else
+        {
+           boat.reelSpeed = 3; 
+        }
+        boat.lureColor = color(0,1);
         fishes.get(i).setCaught();
       }
     }
@@ -115,6 +128,8 @@ void removeFish(int i)
         fishes.remove(i);
         fishCounter++;
         canCatch = true;
+        boat.reelSpeed = 3;
+        boat.lureColor = color(185,10,10);
       }
     } 
 }
