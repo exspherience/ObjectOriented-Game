@@ -52,13 +52,13 @@ class Fish
   
   // draw fish
   void display()
-  {
-    fill(0);
-    text(fishCounter, 5, 50);
-      
+  {      
+    // fish body
     noStroke();
     fill(fishColor);
     ellipse(position.x, position.y, size+20,  size);
+    
+    // draw fish tails on correct side of fish
     if(spawnX <= 0) 
     {
       triangle(position.x,position.y,position.x-(size/2)-10,position.y+(size/2),position.x-(size/2)-10,position.y-(size/2));
@@ -68,6 +68,7 @@ class Fish
       triangle(position.x,position.y,position.x+(size/2)+10,position.y+(size/2),position.x+(size/2)+10,position.y-(size/2));
     }
     
+    // hidden rectangle for collision
     fill(0, 1);
     rect(position.x, position.y, size+20, size);
   }
@@ -77,11 +78,12 @@ class Fish
     caught = true;
   } 
   
+  // stop fish from moving, set to fishing line
   void reelFish()
   {
     velocity.set(0, 0);
     acceleration.set(0, 0);
-    position.set(boat.boatX+40, boat.fishingLineY);
+    position.set(boat.fishingLineX, boat.fishingLineY);
   }
   
 }

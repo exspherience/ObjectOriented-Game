@@ -78,4 +78,15 @@ class Boat
     boatX = constrain(boatX, -10, width+10);
     fishingLineX = constrain(fishingLineX, 40, width+60);
   }
+  
+  void boatReset()
+  {
+    boatX = width/2;
+    boatY = 100;
+    boatSpeed = 3;
+    reelSpeed = 3;
+    fishingLineY = boatY+40;
+    fishingLineX = boatX+50;
+    lureColor = color(185,10,10);
+  }
 }
