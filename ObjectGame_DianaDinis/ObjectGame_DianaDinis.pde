@@ -108,14 +108,14 @@ void spawnAndUpdateFish()
   { 
     fishes.get(i).update();
     fishes.get(i).display();
-    canCatch = false;
+    canCatch = true;
 
     // checks if fish can be caught, prevents catching multiple fish at once
     for (int j = 0; j < fishes.size(); j++)
     {
       if (fishes.get(j).caught)
       {
-        canCatch = true;
+        canCatch = false;
         break;
       }
     }
@@ -124,7 +124,7 @@ void spawnAndUpdateFish()
     if (fishCollision(i))
     {
       // checks if fish has not already been caught
-      if (fishes.get(i).caught == false && !canCatch)
+      if (fishes.get(i).caught == false && canCatch)
       {
         // changes reel speed based on fish size
         if (fishes.get(i).size >= 18)
@@ -193,7 +193,7 @@ void removeFish(int i)
         fishScore += 5;
       }
       fishes.remove(i);
-      canCatch = true; // reset catching ability
+      canCatch = false; // reset catching ability
       boat.reelSpeed = 3; // reset reel speed
       boat.lureColor = color(185, 10, 10); // reset lure color
     }
